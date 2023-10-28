@@ -70,6 +70,10 @@ export class Jeep implements KioTask {
         this._kioapi = kioapi;
         this.domNode = domNode;
 
+        if (!(this as any).message)
+            (this as any).message = (s:string) => s;
+        let message = (this as any).message;
+
         domNode.innerHTML = `<div style="background: url(${kioapi.basePath}jeep-resources/sand4.jpg)">
                 <canvas
                     style="display: block"
@@ -105,7 +109,7 @@ export class Jeep implements KioTask {
         console.log('problem level is', this.level);
 
         this.field_view = new FieldView(this.field, canvas, (p: Position) => this.car_position_change(p));
-        this.history_view = new HistoryView(history, this.history);
+        this.history_view = new HistoryView(history, this.history, message);
         this.history_view.add_listener(() => this.history_updated());
 
         this.field_view.field_state = this.history.initial_state;
@@ -124,25 +128,29 @@ export class Jeep implements KioTask {
     }
 
     parameters(): KioParameterDescription[] {
+        if (!(this as any).message)
+            (this as any).message = (s:string) => s;
+        let message = (this as any).message;
+
         return [
             {
                 name: "far_with_return",
-                title: "Дальность с возвращением",
+                title: message("Дальность с возвращением"),
                 ordering: 'maximize'
             },
             {
                 name: "far",
-                title: "Дальность",
+                title: message("Дальность"),
                 ordering: 'maximize'
             },
             {
                 name: "total_fuel",
-                title: "Использовано топлива",
+                title: message("Использовано топлива"),
                 ordering: 'minimize'
             },
             {
                 name: "steps",
-                title: "Количество шагов",
+                title: message("Количество команд"),
                 ordering: 'minimize'
             }
         ];

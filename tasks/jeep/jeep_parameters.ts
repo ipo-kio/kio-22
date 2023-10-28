@@ -6,25 +6,29 @@ export class Jeep implements KioTaskParameters {
     }
 
     parameters(): KioParameterDescription[] {
+        if (!(this as any).message)
+            (this as any).message = (s:string) => s;
+        let message = (this as any).message;
+
         return [
             {
                 name: "far_with_return",
-                title: "Дальность с возвращением",
+                title: message("Дальность с возвращением"),
                 ordering: 'maximize'
             },
             {
                 name: "far",
-                title: "Дальность",
+                title: message("Дальность"),
                 ordering: 'maximize'
             },
             {
                 name: "total_fuel",
-                title: "Использовано топлива",
+                title: message("Использовано топлива"),
                 ordering: 'minimize'
             },
             {
                 name: "steps",
-                title: "Количество шагов",
+                title: message("Количество команд"),
                 ordering: 'minimize'
             }
         ];

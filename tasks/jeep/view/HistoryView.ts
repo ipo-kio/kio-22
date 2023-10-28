@@ -8,13 +8,15 @@ export class HistoryView {
     private _history: History;
     private _current_index: number;
     private _update_listeners: (() => void)[] = [];
+    private _message: (s: string) => string
 
-    constructor(div: HTMLDivElement, history: History) {
+    constructor(div: HTMLDivElement, history: History, message: (s: string) => string) {
         this._div = div;
         this._div.appendChild(this._ol);
         this.history = history;
         this._current_index = history.size - 1;
         this.update();
+        this._message = message
     }
 
     get div(): HTMLDivElement {
@@ -50,7 +52,7 @@ export class HistoryView {
                 sub_div.classList.add('wrong');
             let text_span = sub_div.children[0] as HTMLSpanElement;
             let value_span = sub_div.children[1] as HTMLSpanElement;
-            text_span.innerText = step.text;
+            text_span.innerText = this._message(step.text);
             value_span.innerText = '' + step.value;
         }
 
