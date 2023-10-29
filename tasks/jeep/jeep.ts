@@ -9,8 +9,12 @@ import {Constants} from "./Constants";
 import {FieldView} from "./view/FieldView";
 import {Position} from "./model/Position";
 import {MoveTo, PickOrPut, StepType} from "./model/Step";
+import { LOCALIZATION } from './localization';
 
 export class Jeep implements KioTask {
+    static LOCALIZATION = LOCALIZATION;
+    public settings: KioTaskSettings;
+
     private readonly _constants: Constants;
     private _kioapi: KioApi;
     private domNode: HTMLElement;
@@ -73,6 +77,7 @@ export class Jeep implements KioTask {
         if (!(this as any).message)
             (this as any).message = (s:string) => s;
         let message = (this as any).message;
+        console.log("Loading language for task:", this.settings.language);
 
         domNode.innerHTML = `<div style="background: url(${kioapi.basePath}jeep-resources/sand4.jpg)">
                 <canvas

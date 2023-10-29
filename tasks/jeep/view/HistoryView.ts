@@ -11,12 +11,12 @@ export class HistoryView {
     private _message: (s: string) => string
 
     constructor(div: HTMLDivElement, history: History, message: (s: string) => string) {
+        this._message = message;
         this._div = div;
         this._div.appendChild(this._ol);
         this.history = history;
         this._current_index = history.size - 1;
         this.update();
-        this._message = message
     }
 
     get div(): HTMLDivElement {
