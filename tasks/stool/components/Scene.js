@@ -200,7 +200,7 @@ class Scene extends Component {
              <div className="info">
                 <button className='X'>X = {this.state.x}</button>
                 <button className='Z'>Y = {this.state.z}</button>
-                <button className='Angle'>Угол = {this.state.angle}</button>
+                <button className='Angle'>Angle = {this.state.angle}</button>
             </div>
         </div>
 

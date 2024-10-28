@@ -101,13 +101,13 @@ class Controller extends Component{
     render() {
         return(
             <div>
-                <input className="DropButton" type='button' onClick={this.drop} value="ТЕСТ"/>
-                <input className="DropAndShowButton" type='button' onClick={this.dropAndShow} value="МЕДЛЕННО"/>
+                <input className="DropButton" type='button' onClick={this.drop} value="TEST"/>
+                <input className="DropAndShowButton" type='button' onClick={this.dropAndShow} value="SLOW"/>
                 <input className="LeftMoveButton" type='button' onClick={this.leftButton} value="←"/>
                 <input className="RightMoveButton" type='button' onClick={this.rightButton} value="→"/>
                 <input className="BackMoveButton" type='button' onClick={this.backButton} value="↑"/>
                 <input className="ForwardMoveButton" type='button' onClick={this.forwardButton} value="↓"/>
-                <input className="RestartButton" type='button' onClick={this.RestartButton} value="ПОДНЯТЬ"/>
+                <input className="RestartButton" type='button' onClick={this.RestartButton} value="LIFT BACK"/>
                 <input className="RightRotationButton" type='button' onClick={this.RightRotationButton} value="↷"/>
                 <input className="LeftRotationButton" type='button' onClick={this.LeftRotationButton} value="↶"/>
                 <div className="TransparentButton">
